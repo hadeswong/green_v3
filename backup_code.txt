@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>綠綠賞卡片</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #333;
+            margin: 0 0 20px 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* 卡片容器 */
+        .cards-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            overflow-x: scroll;
+            scroll-snap-type: none; /* 移除默认的scroll-snap */
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 20px 0;
+            /* 移除默认的scroll-behavior */
+            scroll-behavior: auto;
+            /* 优化触摸体验 */
+            touch-action: pan-x;
+            /* 防止iOS橡皮筋效果 */
+            overscroll-behavior-x: none;
+        }
+
+        /* 卡片容器 */
+        .cards-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 卡片容器 */
+        .cards-wrapper {
+            display: flex;
+            padding: 0 calc(60% - 200px);
+            gap: 5px;
+        }
+
+        /* 卡片容器 */
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 325px; /* 卡片寬 */
+            margin: 0 auto;
+        }
+
+        /* 卡片样式 */
+        .flip-card {
+            min-width: 350px;
+            height: 220px;
+            perspective: 1000px;
+            transform: scale(0.85);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            will-change: transform;
+            /* 优化性能 */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        /* 卡片動畫 */
+        .flip-card.active {
+            transform: scale(0.95);
+        }
+
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s;
+            transform-style: preserve-3d;
+        }
+
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .flip-card-front {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* 卡片背面 */
+        .flip-card-back {
+            background-color: #dadada;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+        }
+
+        .flip-card-back.completed {
+            background-color: #8ef18e; /* 淡绿色背景 */
+        }
+
+        /* 會員編號 */
+        .member-id {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* 卡片內容 */
+        .card-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: auto; /* 使用auto来确保内容和提示框之间的间距 */
+            flex: 1;
+        }
+
+        /* 卡片內容左邊 */
+        .qrcode-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 卡片內容圖片 */
+        .qrcode-container img {
+            width: 145px;
+            height: 145px;
+        }
+
+        /* 卡片內容右邊 */
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* 卡片內容標題 */
+        .recycle-title h2 {
+            margin: 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* 卡片內容開關 */
+        .switch-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .alert-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .alert {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            width: 200px;
+            margin: 0 auto;
+        }
+
+        .alert.completed {
+            background-color: #4CAF50;
+        }
+
+        /* 滑动开关样式 */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .1s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .1s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .navigation {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 0;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ccc;
+            transition: background-color 0.3s;
+        }
+
+        .nav-dot.active {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>綠綠賞會員卡</h1>
+        <div class="cards-container">
+            <div class="cards-wrapper">
+                <!-- 第一张卡片 -->
+                <div class="card-container">
+                    <div class="flip-card" data-card-index="0">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="member-id">會員編號：4506358841</div>
+                                <div class="card-content">
+                                    <div class="qrcode-container">
+                                        <img src="green.png" alt="QR Code">
+                                    </div>
+                                    <div class="right-content">
+                                        <div class="recycle-title">
+                                            <h2>廚餘回收</h2>
+                                        </div>
+                                        <div class="switch-container">
+                                            <label class="switch">
+                                                <input type="checkbox" class="recycleCheck" id="recycleCheck-0">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert-container">
+                        <div class="alert" id="alert-0">未完成廚餘回收</div>
+                    </div>
+                </div>
+
+                <!-- 第二张卡片 -->
+                <div class="card-container">
+                    <div class="flip-card" data-card-index="1">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="member-id">會員編號：01</div>
+                                <div class="card-content">
+                                    <div class="qrcode-container">
+                                        <img src="green.png" alt="QR Code">
+                                    </div>
+                                    <div class="right-content">
+                                        <div class="recycle-title">
+                                            <h2>廚餘回收</h2>
+                                        </div>
+                                        <div class="switch-container">
+                                            <label class="switch">
+                                                <input type="checkbox" class="recycleCheck" id="recycleCheck-1">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert-container">
+                        <div class="alert" id="alert-1">未完成廚餘回收</div>
+                    </div>
+                </div>
+
+                <!-- 第三张卡片 -->
+                <div class="card-container">
+                    <div class="flip-card" data-card-index="2">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="member-id">會員編號：02</div>
+                                <div class="card-content">
+                                    <div class="qrcode-container">
+                                        <img src="green.png" alt="QR Code">
+                                    </div>
+                                    <div class="right-content">
+                                        <div class="recycle-title">
+                                            <h2>廚餘回收</h2>
+                                        </div>
+                                        <div class="switch-container">
+                                            <label class="switch">
+                                                <input type="checkbox" class="recycleCheck" id="recycleCheck-2">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert-container">
+                        <div class="alert" id="alert-2">未完成廚餘回收</div>
+                    </div>
+                </div>
+
+                <!-- 第四张卡片 -->
+                <div class="card-container">
+                    <div class="flip-card" data-card-index="3">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="member-id">會員編號：03</div>
+                                <div class="card-content">
+                                    <div class="qrcode-container">
+                                        <img src="green.png" alt="QR Code">
+                                    </div>
+                                    <div class="right-content">
+                                        <div class="recycle-title">
+                                            <h2>廚餘回收</h2>
+                                        </div>
+                                        <div class="switch-container">
+                                            <label class="switch">
+                                                <input type="checkbox" class="recycleCheck" id="recycleCheck-3">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert-container">
+                        <div class="alert" id="alert-3">未完成廚餘回收</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <div class="nav-dot active"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cardsContainer = document.querySelector('.cards-container');
+            const cards = document.querySelectorAll('.card-container');
+            const navDots = document.querySelectorAll('.nav-dot');
+            
+            let lastActiveIndex = 0;
+            let startX;
+            let currentX;
+            let isDragging = false;
+            let startScrollLeft;
+            let animationFrameId;
+            const cardWidth = cards[0].offsetWidth + 5;
+
+            function smoothScrollToCard(index) {
+                const targetScroll = cardWidth * index;
+                const startScroll = cardsContainer.scrollLeft;
+                const distance = targetScroll - startScroll;
+                let startTime = null;
+                const duration = 300; // 动画持续时间
+
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    
+                    // 使用 easeOutCubic 缓动函数使动画更自然
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    
+                    cardsContainer.scrollLeft = startScroll + (distance * easeProgress);
+
+                    if (progress < 1) {
+                        animationFrameId = requestAnimationFrame(animation);
+                    } else {
+                        updateActiveCard(index);
+                    }
+                }
+
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = requestAnimationFrame(animation);
+            }
+
+            function updateActiveCard(index) {
+                if (index !== lastActiveIndex) {
+                    cards.forEach((cardContainer, i) => {
+                        const flipCard = cardContainer.querySelector('.flip-card');
+                        if (i === index) {
+                            flipCard.classList.add('active', 'flipped');
+                        } else {
+                            flipCard.classList.remove('active', 'flipped');
+                        }
+                    });
+
+                    navDots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+
+                    lastActiveIndex = index;
+                }
+            }
+
+            function getActiveIndex() {
+                return Math.round(cardsContainer.scrollLeft / cardWidth);
+            }
+
+            // 触摸事件处理
+            cardsContainer.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].pageX;
+                currentX = startX;
+                startScrollLeft = cardsContainer.scrollLeft;
+                
+                // 停止任何正在进行的动画
+                cancelAnimationFrame(animationFrameId);
+                
+                cardsContainer.style.scrollBehavior = 'auto';
+            }, { passive: true });
+
+            cardsContainer.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                
+                currentX = e.touches[0].pageX;
+                const walk = (startX - currentX) * 1.5; // 增加滑动灵敏度
+                cardsContainer.scrollLeft = startScrollLeft + walk;
+            }, { passive: true });
+
+            function handleTouchEnd() {
+                if (!isDragging) return;
+                isDragging = false;
+                
+                const endScrollLeft = cardsContainer.scrollLeft;
+                const deltaX = endScrollLeft - startScrollLeft;
+                
+                // 计算最接近的卡片索引
+                let targetIndex = getActiveIndex();
+                
+                // 如果滑动距离超过卡片宽度的20%，则切换到下一张或上一张
+                if (Math.abs(deltaX) > cardWidth * 0.2) {
+                    targetIndex = deltaX > 0 ? 
+                        Math.ceil(cardsContainer.scrollLeft / cardWidth) : 
+                        Math.floor(cardsContainer.scrollLeft / cardWidth);
+                }
+                
+                // 确保索引在有效范围内
+                targetIndex = Math.max(0, Math.min(targetIndex, cards.length - 1));
+                
+                // 使用自定义动画滚动到目标卡片
+                smoothScrollToCard(targetIndex);
+            }
+
+            cardsContainer.addEventListener('touchend', handleTouchEnd);
+            cardsContainer.addEventListener('touchcancel', handleTouchEnd);
+
+            // 导航点点击事件
+            navDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    smoothScrollToCard(index);
+                });
+            });
+
+            // 初始化第一张卡片
+            const firstCard = cards[0].querySelector('.flip-card');
+            firstCard.classList.add('active', 'flipped');
+
+            // 为每张卡片添加功能
+            cards.forEach((cardContainer, index) => {
+                const card = cardContainer.querySelector('.flip-card');
+                const recycleCheck = cardContainer.querySelector(`#recycleCheck-${index}`);
+                const alert = cardContainer.querySelector(`#alert-${index}`);
+                const cardBack = cardContainer.querySelector('.flip-card-back');
+
+                // 卡片点击事件
+                card.addEventListener('click', function(e) {
+                    if (this.classList.contains('active') && !e.target.closest('.switch')) {
+                        this.classList.toggle('flipped');
+                    }
+                });
+
+                // checkbox点击事件
+                recycleCheck.addEventListener('change', function() {
+                    updateCardStatus(this.checked, alert, cardBack);
+                    saveCardStatus(index, this.checked);
+                });
+
+                // 初始化卡片状态
+                initializeCardStatus(index, recycleCheck, alert, cardBack);
+            });
+
+            // 更新卡片状态
+            function updateCardStatus(isChecked, alert, cardBack) {
+                if (isChecked) {
+                    alert.textContent = '✅ 已完成廚餘回收';
+                    alert.classList.add('completed');
+                    cardBack.classList.add('completed');
+                } else {
+                    alert.textContent = '❌ 未完成廚餘回收';
+                    alert.classList.remove('completed');
+                    cardBack.classList.remove('completed');
+                }
+            }
+
+            // 保存卡片状态
+            function saveCardStatus(index, status) {
+                const today = new Date().toLocaleDateString();
+                localStorage.setItem(`recycleStatus-${index}`, status);
+                localStorage.setItem(`recycleDate-${index}`, today);
+            }
+
+            // 初始化卡片状态
+            function initializeCardStatus(index, recycleCheck, alert, cardBack) {
+                const today = new Date().toLocaleDateString();
+                const savedDate = localStorage.getItem(`recycleDate-${index}`);
+                const savedStatus = localStorage.getItem(`recycleStatus-${index}`);
+
+                if (savedDate !== today) {
+                    // 如果不是今天，重置状态
+                    recycleCheck.checked = false;
+                    updateCardStatus(false, alert, cardBack);
+                    saveCardStatus(index, false);
+                } else {
+                    // 恢复保存的状态
+                    const status = savedStatus === 'true';
+                    recycleCheck.checked = status;
+                    updateCardStatus(status, alert, cardBack);
+                }
+            }
+
+            // 自动重置功能
+            function setupAutoReset() {
+                const now = new Date();
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                tomorrow.setHours(0, 0, 0, 0);
+
+                const timeUntilReset = tomorrow - now;
+
+                setTimeout(() => {
+                    // 重置所有卡片
+                    cards.forEach((cardContainer, index) => {
+                        const recycleCheck = cardContainer.querySelector(`#recycleCheck-${index}`);
+                        const alert = cardContainer.querySelector(`#alert-${index}`);
+                        const cardBack = cardContainer.querySelector('.flip-card-back');
+                        
+                        recycleCheck.checked = false;
+                        updateCardStatus(false, alert, cardBack);
+                        saveCardStatus(index, false);
+                    });
+
+                    // 设置每24小时重复执行
+                    setInterval(() => {
+                        cards.forEach((cardContainer, index) => {
+                            const recycleCheck = cardContainer.querySelector(`#recycleCheck-${index}`);
+                            const alert = cardContainer.querySelector(`#alert-${index}`);
+                            const cardBack = cardContainer.querySelector('.flip-card-back');
+                            
+                            recycleCheck.checked = false;
+                            updateCardStatus(false, alert, cardBack);
+                            saveCardStatus(index, false);
+                        });
+                    }, 24 * 60 * 60 * 1000);
+                }, timeUntilReset);
+            }
+
+            // 初始化自动重置
+            setupAutoReset();
+        });
+    </script>
+</body>
+</html>

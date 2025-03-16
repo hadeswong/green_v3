@@ -1,0 +1,288 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    overflow: visible;
+}
+
+h1 {
+    color: #333;
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    padding: 20px 0;
+    z-index: 10;
+}
+
+/* 卡片容器 */
+.cards-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    height: auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+/* 卡片容器 */
+.cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    overflow: visible;
+}
+
+/* 卡片容器 */
+.card-container {
+    width: 100%;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.card-container.expanded {
+    z-index: 2;
+}
+
+/* 会员ID区域 */
+.member-header {
+    padding: 15px;
+    background: #ff6b6b;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.member-header.completed {
+    background-color: #4CAF50;
+}
+
+.member-header .member-id {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.member-header .alert {
+    margin: 0;
+    width: auto;
+    padding: 0;
+    background: none;
+    color: white;
+    font-size: 14px;
+}
+
+/* 卡片内容区域 */
+.card-content-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #ffffff;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-content-wrapper.expanded {
+    max-height: none;
+    padding: 20px;
+}
+
+/* 绿卡图片容器 */
+.green-card-container {
+    width: 350px;
+    height: 200px;
+    perspective: 1000px;
+    position: relative;
+}
+
+.green-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.green-card-front,
+.green-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0;
+    overflow: hidden;
+}
+
+.green-card-front {
+    z-index: 2;
+}
+
+.green-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+.green-card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #cecccc;
+    padding: 15px;
+}
+
+.green-card-back .qrcode-container {
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.green-card-back .qrcode-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 回收信息 */
+.recycle-info {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.recycle-info h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+/* 右侧内容 */
+.right-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.right-content h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+/* 卡片內容開關 */
+.switch-container {
+    display: flex;
+    justify-content: center;
+}
+
+.alert-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+/* 开关样式 */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #969696;
+    transition: .1s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .1s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* 警告样式 */
+.alert {
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.alert.completed {
+    background-color: #4CAF50;
+}

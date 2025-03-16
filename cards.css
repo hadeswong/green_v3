@@ -1,0 +1,39 @@
+/* 添加到现有的 CSS 文件顶部 */
+:root {
+    --sat: env(safe-area-inset-top);
+    --sab: env(safe-area-inset-bottom);
+    --sal: env(safe-area-inset-left);
+    --sar: env(safe-area-inset-right);
+}
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: var(--sat) var(--sar) var(--sab) var(--sal);
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: #ffffff;
+    /* 防止 iOS 上的橡皮筋效果 */
+    position: fixed;
+    width: 100%;
+}
+
+/* 防止元素被点击时出现高亮 */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 确保内容区域不会被底部工具栏遮挡 */
+.cards-container {
+    padding-bottom: calc(20px + var(--sab));
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* 你现有的其他 CSS 样式... */
