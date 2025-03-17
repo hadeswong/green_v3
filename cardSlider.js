@@ -67,7 +67,7 @@ class CardSlider {
                         otherCard.classList.remove('expanded');
                     }
                 });
-
+            
                 // 切換當前卡片
                 contentWrapper.classList.toggle('expanded');
                 cardContainer.classList.toggle('expanded');
