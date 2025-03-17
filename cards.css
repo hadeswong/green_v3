@@ -8,16 +8,16 @@
 
 html {
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 body {
     height: 100%;
     margin: 0;
     padding: var(--sat) var(--sar) var(--sab) var(--sal);
-    overflow: hidden;
-    -webkit-user-select: none;
-    user-select: none;
+    overflow: auto;
+    /*  -webkit-user-select: none;
+    user-select: none;*/
     background-color: #ffffff;
     /* 防止 iOS 上的橡皮筋效果 */
     position: fixed;
