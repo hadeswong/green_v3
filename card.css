@@ -20,7 +20,7 @@ h1 {
     margin: 0 0 20px 0;
     font-size: 24px;
     font-weight: 600;
-    position: sticky;
+    position: relative ;
     top: 0;
     padding: 20px 0;
     z-index: 10;
@@ -35,16 +35,16 @@ h1 {
     height: auto;
     padding: 0 20px;
     box-sizing: border-box;
-    overflow: visible;
+    overflow-y: auto; /* 允許垂直滾動 */
 }
 
 /* 卡片容器 */
 .cards-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* 垂直排列卡片 */
     gap: 20px;
     padding: 0;
-    overflow: visible;
+    overflow-y: visible; /* 允許內容超出容器 */
 }
 
 /* 卡片容器 */
