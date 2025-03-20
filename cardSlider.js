@@ -4,12 +4,7 @@ class CardSlider {
         this.initializeCardFeatures();
         this.setupAutoReset();
         this.showAllCards();
-    }
-
-    showAllCards() {
-        this.cards.forEach(card => {
-            card.classList.add('visible');
-        });
+        this.container = document.querySelector('.cards-wrapper');
     }
 
     initializeCardFeatures() {
@@ -21,9 +16,9 @@ class CardSlider {
             const cardBack = cardContainer.querySelector('.green-card-back');
             const cardInner = cardContainer.querySelector('.green-card-inner');
 
-            // 點擊整個卡片時反轉
+            // 點擊整個卡片時反轉並滾動到該卡片
             cardContainer.addEventListener('click', (e) => {
-                // 如果點擊的是複選框、標籤或其容器，不執行反轉
+                // 如果點擊的是複選框、標籤或其容器，不執行反轉和滾動
                 if (e.target.closest('.recycle-check-container') || 
                     e.target.closest('.switch') || 
                     e.target.closest('.slider')) {
@@ -76,17 +71,7 @@ class CardSlider {
                     cardInner.style.transform = 'rotateY(180deg)';
                     // 確保展開的卡片可見
                     setTimeout(() => {
-                        const cardRect = cardContainer.getBoundingClientRect();
-                        const viewportHeight = window.innerHeight;
-                        const cardBottom = cardRect.bottom;
-                        
-                        if (cardBottom > viewportHeight) {
-                            const scrollAmount = cardBottom - viewportHeight + 20;
-                            window.scrollBy({
-                                top: scrollAmount,
-                                behavior: 'smooth'
-                            });
-                        }
+                        this.centerCard(cardContainer);
                     }, 300);
                 } else {
                     cardInner.style.transform = '';
@@ -103,6 +88,7 @@ class CardSlider {
         });
     }
 
+    // 更新卡片是否完成廚餘回收
     updateCardStatus(isChecked, alert, cardBack) {
         const header = alert.closest('.member-header');
         if (isChecked) {
@@ -116,12 +102,14 @@ class CardSlider {
         }
     }
 
+    // 保存卡片狀態
     saveCardStatus(index, status) {
         const today = new Date().toLocaleDateString();
         localStorage.setItem(`recycleStatus-${index}`, status);
         localStorage.setItem(`recycleDate-${index}`, today);
     }
 
+    // 初始化卡片狀態
     initializeCardStatus(index, recycleCheck, alert, cardBack) {
         const today = new Date().toLocaleDateString();
         const savedDate = localStorage.getItem(`recycleDate-${index}`);
@@ -138,6 +126,7 @@ class CardSlider {
         }
     }
 
+    // 設置時間自動重置
     setupAutoReset() {
         const checkDate = () => {
             const today = new Date().toLocaleDateString();
@@ -151,18 +140,6 @@ class CardSlider {
 
         checkDate();
         setInterval(checkDate, 60000);
-    }
-
-    resetAllCards() {
-        this.cards.forEach((cardContainer, index) => {
-            const recycleCheck = cardContainer.querySelector(`#recycleCheck-${index}`);
-            const alert = cardContainer.querySelector(`#alert-${index}`);
-            const cardBack = cardContainer.querySelector('.green-card-back');
-            
-            recycleCheck.checked = false;
-            this.updateCardStatus(false, alert, cardBack);
-            this.saveCardStatus(index, false);
-        });
     }
 }
 

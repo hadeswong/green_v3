@@ -1,10 +1,33 @@
+:root {
+    --sat: env(safe-area-inset-top);
+    --sab: env(safe-area-inset-bottom);
+    --sal: env(safe-area-inset-left);
+    --sar: env(safe-area-inset-right);
+}
+
+html {
+    height: 100%;
+    overflow: auto;
+}
+
+/* 防止元素被点击时出现高亮 */
+* { -webkit-tap-highlight-color: transparent; }
+
 body {
+        /* 防止 iOS 上的橡皮筋效果 */
+        position: fixed;
+        width: 100%;
+        height: 100%;
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    padding: var(--sat) var(--sar) var(--sab) var(--sal);
+    overflow: auto;
     background-color: #f5f5f5;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     -webkit-tap-highlight-color: transparent;
+    /*  -webkit-user-select: none;
+    user-select: none;*/
 }
 
 .container {
@@ -27,8 +50,10 @@ h1 {
 }
 
 /* 卡片容器 */
+/* 确保内容区域不会被底部工具栏遮挡 */
 .cards-container {
     position: relative;
+    height: 100%;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -36,6 +61,7 @@ h1 {
     padding: 0 20px;
     box-sizing: border-box;
     overflow-y: auto; /* 允許垂直滾動 */
+    padding-bottom: calc(20px + var(--sab));
 }
 
 /* 卡片容器 */
@@ -95,6 +121,11 @@ h1 {
     font-size: 14px;
 }
 
+/* 警告样式 */
+.alert.completed {
+    background-color: #4CAF50;
+}
+
 /* 卡片内容区域 */
 .card-content-wrapper {
     max-height: 0;
@@ -115,7 +146,7 @@ h1 {
 /* 绿卡图片容器 */
 .green-card-container {
     width: 350px;
-    height: 200px;
+    height: 220px;
     perspective: 1000px;
     position: relative;
 }
@@ -167,15 +198,15 @@ h1 {
 }
 
 .green-card-back .qrcode-container {
-    width: 140px;
-    height: 140px;
+    width: 180px;
+    height: 180px;
     flex-shrink: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    padding: 10px;
+    padding: 5px;   
     box-sizing: border-box;
 }
 
@@ -198,7 +229,7 @@ h1 {
 
 .recycle-info h2 {
     margin: 0;
-    font-size: 18px;
+    font-size: 20px;
     color: #333;
 }
 
@@ -236,7 +267,7 @@ h1 {
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 34px;
+    height: 35px;
 }
 
 .switch input {
@@ -277,12 +308,3 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
-/* 警告样式 */
-.alert {
-    display: inline-block;
-    transition: background-color 0.3s;
-}
-
-.alert.completed {
-    background-color: #4CAF50;
-}
