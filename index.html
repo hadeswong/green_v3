@@ -27,502 +27,495 @@
 <body>
     <div class="container">
         <h1>綠綠賞會員卡</h1>
+
         <div class="cards-container">
-            <div class="cards-wrapper">
-                <!-- 第一张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="0">
-                        <div class="member-id">編號：4506358841</div>
-                        <div class="alert" id="alert-0">未完成廚餘回收</div>
-                    </div>
 
-                    <!-- 控制卡片內容區域的展開/收起動畫
-                        管理內容的最大高度和過渡效果
-                        在 JavaScript 中用於控制卡片的展開狀態-->
-                    <div class="card-content-wrapper">
-                        <!-- 控制綠卡的尺寸（350x200px）
-                            提供 3D 透視效果（perspective: 1000px）
-                            作為卡片翻轉動畫的容器-->   
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第一张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="0">
+                    <div class="member-id">編號：4506358841</div>
+                    <div class="alert" id="alert-0">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/4506358841.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/4506358841.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-0">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-0">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第二张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="1">
-                        <div class="member-id">編號：0362016724</div>
-                        <div class="alert" id="alert-1">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第二张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="1">
+                    <div class="member-id">編號：0362016724</div>
+                    <div class="alert" id="alert-1">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/0362016724.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/0362016724.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-1">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-1">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第三张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="2">
-                        <div class="member-id">編號：0441236134</div>
-                        <div class="alert" id="alert-2">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第三张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="2">
+                    <div class="member-id">編號：0441236134</div>
+                    <div class="alert" id="alert-2">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/0441236134.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/0441236134.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-2">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-2">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第四张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="3">
-                        <div class="member-id">編號：7332000034</div>
-                        <div class="alert" id="alert-3">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第四张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="3">
+                    <div class="member-id">編號：7332000034</div>
+                    <div class="alert" id="alert-3">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/7332000034.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/7332000034.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-3">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-3">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第五张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="4">
-                        <div class="member-id">編號：4465040440</div>
-                        <div class="alert" id="alert-4">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第五张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="4">
+                    <div class="member-id">編號：4465040440</div>
+                    <div class="alert" id="alert-4">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/4465040440.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/4465040440.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-4">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-4">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第六张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="5">
-                        <div class="member-id">編號：6346719346</div>
-                        <div class="alert" id="alert-5">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第六张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="5">
+                    <div class="member-id">編號：6346719346</div>
+                    <div class="alert" id="alert-5">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/6346719346.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/6346719346.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-5">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-5">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第7张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="6">
-                        <div class="member-id">編號：6927101514</div>
-                        <div class="alert" id="alert-6">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第7张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="6">
+                    <div class="member-id">編號：6927101514</div>
+                    <div class="alert" id="alert-6">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/6927101514.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/6927101514.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-6">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-6">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                 <!-- 第8张卡片 -->
-                 <div class="card-container">
-                    <div class="member-header" data-card-index="7">
-                        <div class="member-id">編號：7980949805</div>
-                        <div class="alert" id="alert-7">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+             <!-- 第8张卡片 -->
+             <div class="card-container">
+                <div class="member-header" data-card-index="7">
+                    <div class="member-id">編號：7980949805</div>
+                    <div class="alert" id="alert-7">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/7980949805.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/7980949805.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-7">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-7">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第9张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="8">
-                        <div class="member-id">編號：5578019597</div>
-                        <div class="alert" id="alert-8">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第9张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="8">
+                    <div class="member-id">編號：5578019597</div>
+                    <div class="alert" id="alert-8">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/5578019597.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/5578019597.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-8">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-8">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
 
-                <!-- 第10张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="9">
-                        <div class="member-id">編號：6133919598</div>
-                        <div class="alert" id="alert-9">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第10张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="9">
+                    <div class="member-id">編號：6133919598</div>
+                    <div class="alert" id="alert-9">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/6133919598.png" alt="QR Code">    
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/6133919598.png" alt="QR Code">    
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-9">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-9">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第11张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="10">
-                        <div class="member-id">編號：7164719599</div>
-                        <div class="alert" id="alert-10">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第11张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="10">
+                    <div class="member-id">編號：7164719599</div>
+                    <div class="alert" id="alert-10">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/7164719599.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/7164719599.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-10">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-10">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第12张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="11">
-                        <div class="member-id">編號：2971014939</div>
-                        <div class="alert" id="alert-11">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第12张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="11">
+                    <div class="member-id">編號：2971014939</div>
+                    <div class="alert" id="alert-11">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/2971014939.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/2971014939.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-11">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-11">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第13张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="12">
-                        <div class="member-id">編號：3046811277</div>
-                        <div class="alert" id="alert-12">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第13张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="12">
+                    <div class="member-id">編號：3046811277</div>
+                    <div class="alert" id="alert-12">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/3046811277.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/3046811277.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-12">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-12">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第14张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="13">
-                        <div class="member-id">編號：2890817845</div>
-                        <div class="alert" id="alert-13">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第14张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="13">
+                    <div class="member-id">編號：2890817845</div>
+                    <div class="alert" id="alert-13">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/2890817845.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/2890817845.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-13">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-13">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第15张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="14">
-                        <div class="member-id">編號：4324119595</div>
-                        <div class="alert" id="alert-14">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第15张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="14">
+                    <div class="member-id">編號：4324119595</div>
+                    <div class="alert" id="alert-14">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/4324119595.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/4324119595.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-14">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-14">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 第16张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="15">
-                        <div class="member-id">編號：9321519600</div>
-                        <div class="alert" id="alert-15">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            <!-- 第16张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="15">
+                    <div class="member-id">編號：9321519600</div>
+                    <div class="alert" id="alert-15">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/9321519600.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/9321519600.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-15">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-15">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- 第17张卡片 -->
-                <div class="card-container">
-                    <div class="member-header" data-card-index="16">
-                        <div class="member-id">編號：9461819601</div>
-                        <div class="alert" id="alert-16">未完成廚餘回收</div>
-                    </div>
-                    <div class="card-content-wrapper">
-                        <div class="green-card-container">
-                            <div class="green-card-inner">
-                                <div class="green-card-front">
-                                    <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+            </div>
+            <!-- 第17张卡片 -->
+            <div class="card-container">
+                <div class="member-header" data-card-index="16">
+                    <div class="member-id">編號：9461819601</div>
+                    <div class="alert" id="alert-16">未完成廚餘回收</div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="green-card-container">
+                        <div class="green-card-inner">
+                            <div class="green-card-front">
+                                <img src="qrcode/green_card.png" alt="綠綠賞卡片">
+                            </div>
+                            <div class="green-card-back">
+                                <div class="qrcode-container">
+                                    <img src="qrcode/9461819601.png" alt="QR Code">
                                 </div>
-                                <div class="green-card-back">
-                                    <div class="qrcode-container">
-                                        <img src="qrcode/9461819601.png" alt="QR Code">
-                                    </div>
-                                    <div class="recycle-info">
-                                        <h2>廚餘回收</h2>
-                                        <label class="switch">
-                                            <input type="checkbox" class="recycleCheck" id="recycleCheck-16">
-                                            <span class="slider"></span>
-                                        </label>
-                                    </div>
+                                <div class="recycle-info">
+                                    <h2>廚餘回收</h2>
+                                    <label class="switch">
+                                        <input type="checkbox" class="recycleCheck" id="recycleCheck-16">
+                                        <span class="slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>

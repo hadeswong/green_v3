@@ -14,10 +14,10 @@ html {
 * { -webkit-tap-highlight-color: transparent; }
 
 body {
-        /* 防止 iOS 上的橡皮筋效果 */
-        position: fixed;
-        width: 100%;
-        height: 100%;
+     /* 防止 iOS 上的橡皮筋效果 */
+    position: fixed;
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -50,27 +50,18 @@ h1 {
 }
 
 /* 卡片容器 */
-/* 确保内容区域不会被底部工具栏遮挡 */
 .cards-container {
     position: relative;
-    height: 100%;
     width: 100%;
-    max-width: 800px;
+    max-width: 500px;
     margin: 0 auto;
-    height: auto;
     padding: 0 20px;
     box-sizing: border-box;
-    overflow-y: auto; /* 允許垂直滾動 */
+    overflow-y: auto;
     padding-bottom: calc(20px + var(--sab));
-}
-
-/* 卡片容器 */
-.cards-wrapper {
     display: flex;
-    flex-direction: column; /* 垂直排列卡片 */
+    flex-direction: column;
     gap: 20px;
-    padding: 0;
-    overflow-y: visible; /* 允許內容超出容器 */
 }
 
 /* 卡片容器 */
@@ -140,7 +131,7 @@ h1 {
 
 .card-content-wrapper.expanded {
     max-height: none;
-    padding: 20px;
+    padding: 10px;
 }
 
 /* 绿卡图片容器 */
@@ -194,12 +185,12 @@ h1 {
     align-items: center;
     justify-content: space-around;
     background-color: #cecccc;
-    padding: 15px;
+    padding: 5px;
 }
 
 .green-card-back .qrcode-container {
-    width: 180px;
-    height: 180px;
+    width: 170px;
+    height: 170px;
     flex-shrink: 0;
     display: flex;
     justify-content: center;
