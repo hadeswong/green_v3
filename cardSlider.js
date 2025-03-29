@@ -142,6 +142,12 @@ class CardSlider {
         setInterval(checkDate, 60000);
     }
 }
+// 定期檢查狀態
+setInterval(async () => {
+    const currentState = await getCheckboxState();
+    document.getElementById('myCheckbox').checked = currentState;
+  }, 5000); // 每5秒檢查一次
+
 
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
